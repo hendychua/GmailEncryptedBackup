@@ -5,13 +5,13 @@ Having fun with Gmail APIs. This CLI program retrieves your email (filtered by s
 1. Boost
 2. Casablanca (Microsoft's CPP Rest SDK)
 3. Poco (for its Crypto library)
-4. openssl has to be installed for Casablanca and Poco::Crypto to work.
+4. crypto and openssl has to be installed for Casablanca and Poco::Crypto to work.
 
 ## Compilation
 This CLI program uses Rest APIs by Google, hence it requires a Client ID and Client Secret provided by Google when you register your application. It is unsafe to store Client ID and Client Secret in source code. Hence you need to provide both of them when compiling. The compilation command is:
 
 <code>
-g++ -o <programName> -DCLIENT_ID='"<clientId>"' -DCLIENT_SECRET='"<clientSecret>"' main.cpp GoogleAuthorizationClient.cpp GmailMessageClient.cpp EncryptionStorageManager.cpp -std=c++11 -I<path to casablanca>/Casablanca/include -lcrypto -lssl -lboost_system -lboost_filesystem -L<path to casablanca>/Casablanca/lib -lcpprest -lboost_thread -I<path to crypto>/Cryptopp/include -L<path to Crytopp>/Cryptopp/lib -lcryptopp -I<path to Poco>/Poco/include -L<path to Poco>/Poco/lib -lPocoCrypto
+g++ -o <programName> -DCLIENT_ID='"clientId"' -DCLIENT_SECRET='"clientSecret"' main.cpp GoogleAuthorizationClient.cpp GmailMessageClient.cpp EncryptionStorageManager.cpp -std=c++11 -I<path to casablanca>/Casablanca/include -lcrypto -lssl -lboost_system -lboost_filesystem -L<path to casablanca>/Casablanca/lib -lcpprest -lboost_thread -I<path to Poco>/Poco/include -L<path to Poco>/Poco/lib -lPocoCrypto
 </code>
 
 Obviously, the compilation command assumes that you installed Boost with your package manager and it is in your /usr/lib folder. If your boost is in another folder, you have to include the lib folder and include folder inside the compilation command.
