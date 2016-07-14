@@ -1,0 +1,9 @@
+.DS_Store
+
+# do not want to commit thirdparty libraries which takes up space
+thirdparty/
+
+# incomplete file
+CMakeLists.txt
+
+compileCommands.txt
