@@ -2,6 +2,7 @@
 
 #include "Poco/Crypto/CipherFactory.h"
 #include "Poco/Crypto/Cipher.h"
+#include "Poco/Crypto/CipherKey.h"
 
 #include <iostream>
 #include <fstream>
@@ -30,9 +31,9 @@ string EncryptionStorageManager::Encrypt(const string &userEncryptionKey, const 
 {
     string encryptedPayload;
 
-    Poco::Crypto::CipherFactory& factory = CipherFactory::defaultFactory();
+    Poco::Crypto::CipherFactory& factory = Poco::Crypto::CipherFactory::defaultFactory();
     // Creates a 256-bit AES cipher
-    Cipher* pCipher = factory.createCipher(CipherKey("aes-256", userEncryptionKey));
+    Poco::Crypto::Cipher* pCipher = factory.createCipher(Poco::Crypto::CipherKey("aes-256", userEncryptionKey));
     encryptedPayload = pCipher->encryptString(payload);
 
     return encryptedPayload;
@@ -42,9 +43,9 @@ string EncryptionStorageManager::Decrypt(const string &userEncryptionKey, const 
 {
     string decryptedPayload;
 
-    Poco::Crypto::CipherFactory& factory = CipherFactory::defaultFactory();
+    Poco::Crypto::CipherFactory& factory = Poco::Crypto::CipherFactory::defaultFactory();
     // Creates a 256-bit AES cipher
-    Cipher* pCipher = factory.createCipher(CipherKey("aes-256", userEncryptionKey));
+    Poco::Crypto::Cipher* pCipher = factory.createCipher(Poco::Crypto::CipherKey("aes-256", userEncryptionKey));
     decryptedPayload = pCipher->decryptString(payload);
 
     return decryptedPayload;
